@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgres:10.0
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: dev_mem
+    ports:
+      - "45533:5432"
