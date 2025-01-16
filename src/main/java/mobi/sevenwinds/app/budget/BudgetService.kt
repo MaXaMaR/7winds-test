@@ -33,8 +33,12 @@ object BudgetService {
 
             if (param.authorFullName != null) {
                 val authorFullNameComp = param.authorFullName.toLowerCase()
+                val authorFullNameParts = authorFullNameComp.split(' ')
                 data = data.filter {
-                    it.author?.fullName?.toLowerCase()?.contains(authorFullNameComp) == true
+                    val itFullName = it.author?.fullName?.toLowerCase()
+                    authorFullNameParts.all { authorFullNamePart ->
+                        itFullName?.contains(authorFullNamePart) == true
+                    }
                 }
             }
 
